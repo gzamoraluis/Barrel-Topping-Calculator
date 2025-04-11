@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrel Topping Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#4361ee">
+</head>
+<body>
+    <div class="container">
+        <nav class="app-nav">
+            <h1>Barrel Topping Calculator</h1>
+            <a href="so2-calculator.html" class="nav-link">SO₂ Calculator</a>
+        </nav>
+
+        <div class="form-group">
+            <label for="gallons">Gallons used for topping:</label>
+            <input type="number" id="gallons" step="0.01" min="0" placeholder="e.g., 3">
+        </div>
+
+        <div id="batchInputs">
+            <div class="batch-header">
+                <span>Barrel batches:</span>
+                <button type="button" onclick="addBatch()" class="add-btn">+ Add Batch</button>
+            </div>
+            <div class="batch-row" id="batchRow1">
+                <div class="batch-container">
+                    <div class="batch-count">
+                        <label>Barrel count</label>
+                        <input type="number" class="barrel-count" min="1" value="1">
+                    </div>
+                    <div class="batch-tag-input">
+                        <label>Tag (optional)</label>
+                        <input type="text" class="batch-tag" placeholder="e.g., Merlot">
+                    </div>
+                </div>
+                <button type="button" onclick="removeBatch('batchRow1')" class="remove-btn">- Remove</button>
+            </div>
+        </div>
+
+        <button class="calculate" onclick="calculateTopping()">Calculate</button>
+
+        <div id="result" class="hidden">
+            <div class="result-item">
+                <strong>Total barrels:</strong> <span id="totalBarrels"></span>
+            </div>
+            <div class="result-item">
+                <strong>Gallons per barrel (unrounded):</strong> <span id="perBarrel"></span>
+            </div>
+            <h3>Distribution per batch:</h3>
+            <div id="batchResults"></div>
+            <div class="subtraction-steps">
+                <h4>Subtraction Steps:</h4>
+                <div id="subtractionSteps"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="topping-calculator.js"></script>
+</body>
+</html>
